@@ -1,0 +1,21 @@
+name: Use Secrets1
+
+on: [push]
+
+jobs:
+  use_secrets_job:
+    runs-on: ubuntu-latest
+    environment: env1
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    
+    - name: Print secret
+      run: echo ${{ secrets.MY_SECRET }}
+
+    - name: Print secret
+      run: echo ${{ secrets.MY_SECRET }} > 1.txt
+
+    - name: Run tmate
+      uses: mxschmitt/action-tmate@v2
